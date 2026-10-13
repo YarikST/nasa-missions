@@ -123,7 +123,7 @@ class Admin::SelectMenuComponent < Admin::BaseComponent
   end
 
   def trigger_id
-    name.to_s.parameterize(separator: "_")
+    html_attributes[:id].presence || name.to_s.parameterize(separator: "_")
   end
 
   def input_id

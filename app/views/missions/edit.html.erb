@@ -1,0 +1,30 @@
+<% content_for :title, "Plan #{@mission.name} · NASA Missions" %>
+
+<div class="mb-4">
+  <%= link_to root_path, class: "link-secondary text-decoration-none small" do %>
+    <i class="bi bi-arrow-left" aria-hidden="true"></i> All missions
+  <% end %>
+  <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-3">
+    <div>
+      <h1 class="mb-2">Plan mission</h1>
+      <p class="text-body-secondary mb-0">Edit details and build the flight path. Fuel updates after each change.</p>
+    </div>
+    <%= render Admin::ButtonComponent.new(path: mission_path(@mission), variant: :outline_secondary) do %>
+      View mission
+    <% end %>
+  </div>
+</div>
+
+<%= render Admin::FlashComponent.new(notice: notice, alert: alert) %>
+
+<div class="row g-4 align-items-start">
+  <div class="col-lg-8">
+    <%= render "details_form", mission: @mission %>
+    <div class="mt-4">
+      <%= render "flight_path", mission: @mission, planets: @planets, new_step: MissionStep.new, errors: [] %>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <%= render "fuel_estimate", fuel: @fuel %>
+  </div>
+</div>

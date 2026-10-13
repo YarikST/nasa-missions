@@ -1,0 +1,39 @@
+<div class="border rounded-3 p-3 mb-3">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="h6 mb-0">Step <%= number %></h3>
+    <%= render Admin::ButtonComponent.new(
+      path: mission_mission_step_path(mission, step),
+      method: :delete,
+      variant: :outline_danger,
+      size: :sm,
+      icon: "trash"
+    ) do %>
+      Remove
+    <% end %>
+  </div>
+
+  <%= form_with model: [mission, step], data: { controller: "mission-form", action: "change->mission-form#submit" } do |form| %>
+    <div class="row g-3">
+      <div class="col-sm-6">
+        <%= render Admin::SelectMenuComponent.new(
+          name: form.field_name(:action),
+          title: "Action",
+          options: MissionStep::ACTIONS.map { |action| [action.capitalize, action] },
+          value: step.action,
+          mandatory: true,
+          html_attributes: { id: "step_#{step.id}_action" }
+        ) %>
+      </div>
+      <div class="col-sm-6">
+        <%= render Admin::SelectMenuComponent.new(
+          name: form.field_name(:planet_id),
+          title: "Planet",
+          options: planets.map { |planet| [planet.name, planet.id] },
+          value: step.planet_id,
+          mandatory: true,
+          html_attributes: { id: "step_#{step.id}_planet" }
+        ) %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+<div id="fuel_estimate" aria-live="polite">
+  <%= render Admin::CardComponent.new(title: "Fuel estimate", description: "Includes the fuel needed to carry fuel for later steps.") do %>
+    <% if fuel.nil? %>
+      <p class="text-body-secondary mb-0"><%= local_assigns.fetch(:message, "Enter a valid equipment mass to calculate fuel.") %></p>
+    <% else %>
+      <div class="display-6 fw-semibold"><%= number_with_delimiter(fuel) %> <span class="fs-5">kg</span></div>
+      <p class="text-body-secondary small mb-0">Total fuel required</p>
+    <% end %>
+  <% end %>
+</div>

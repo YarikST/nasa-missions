@@ -1,0 +1,48 @@
+<div id="flight_path">
+  <%= render Admin::CardComponent.new(title: "Flight path", description: "Add each launch and landing in travel order. Changes save automatically.") do %>
+    <% if errors.any? %>
+      <div class="alert alert-danger" role="alert"><%= errors.to_sentence %></div>
+    <% end %>
+
+    <% if mission.mission_steps.any? %>
+      <% mission.mission_steps.each_with_index do |step, index| %>
+        <%= render "missions/step", mission: mission, step: step, number: index + 1, planets: planets %>
+      <% end %>
+    <% else %>
+      <p class="text-body-secondary">No steps yet. Choose an action and planet below to start the route.</p>
+    <% end %>
+
+    <div class="border border-dashed rounded-3 p-3">
+      <h3 class="h6 mb-3">Add step</h3>
+      <%= form_with model: [mission, new_step] do |form| %>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <%= render Admin::SelectMenuComponent.new(
+              name: form.field_name(:action),
+              title: "Action",
+              options: MissionStep::ACTIONS.map { |action| [action.capitalize, action] },
+              value: new_step.action,
+              mandatory: true,
+              errors: new_step.errors[:action],
+              html_attributes: { id: "new_step_action" }
+            ) %>
+          </div>
+          <div class="col-sm-6">
+            <%= render Admin::SelectMenuComponent.new(
+              name: form.field_name(:planet_id),
+              title: "Planet",
+              options: planets.map { |planet| [planet.name, planet.id] },
+              value: new_step.planet_id,
+              mandatory: true,
+              errors: new_step.errors[:planet],
+              html_attributes: { id: "new_step_planet" }
+            ) %>
+          </div>
+        </div>
+        <%= render Admin::ButtonComponent.new(type: :submit, icon: "plus-lg", disabled: planets.empty?) do %>
+          Add step
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

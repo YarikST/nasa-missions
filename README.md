@@ -20,6 +20,8 @@ The provision command copies `.env.example` to `.env` if needed. Set `APP_PORT`
 in `.env` to use a different web port, for example when another application is
 also running.
 Docker containers, volumes, and databases use separate `nasa-missions` names.
+Run `dip rails db:seed` on an existing database to add the Earth, Moon, and Mars
+options used by the mission planner.
 
 Useful commands:
 

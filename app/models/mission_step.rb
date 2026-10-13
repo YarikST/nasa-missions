@@ -7,5 +7,7 @@ class MissionStep < ApplicationRecord
   belongs_to :planet
 
   validates :action, inclusion: { in: ACTIONS }
-  validates :position, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, uniqueness: { scope: :mission_id }
+  validates :position,
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 },
+    uniqueness: { scope: :mission_id }
 end

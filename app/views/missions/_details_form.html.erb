@@ -1,0 +1,36 @@
+<div id="mission_details">
+  <%= render Admin::CardComponent.new(title: "Mission details", description: "Name your mission and enter the spacecraft's equipment mass.") do %>
+    <%= form_with model: mission,
+                  data: (mission.persisted? ? { controller: "mission-form", action: "change->mission-form#submit" } : {}) do |form| %>
+      <%= render Admin::InputComponent.new(
+        name: form.field_name(:name),
+        title: "Mission name",
+        value: mission.name,
+        mandatory: true,
+        placeholder: "e.g. Apollo 11",
+        errors: mission.errors[:name]
+      ) %>
+
+      <%= render Admin::InputComponent.new(
+        name: form.field_name(:equipment_mass),
+        title: "Equipment mass (kg)",
+        type: :number,
+        value: mission.equipment_mass,
+        mandatory: true,
+        placeholder: "28801",
+        hint: "Enter a positive mass in kilograms.",
+        errors: mission.errors[:equipment_mass],
+        data: (mission.persisted? ? { action: "input->mission-form#submit" } : {}),
+        html_attributes: { min: "0.001", step: "0.001", inputmode: "decimal" }
+      ) %>
+
+      <% if mission.persisted? %>
+        <p class="text-body-secondary small mb-0">Changes save automatically.</p>
+      <% else %>
+        <%= render Admin::ButtonComponent.new(type: :submit, icon: "check-lg") do %>
+          Create mission
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

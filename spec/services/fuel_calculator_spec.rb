@@ -43,6 +43,23 @@ RSpec.describe FuelCalculator do
     expect(described_class.new(mission: mission).call).to eq(51_898)
   end
 
+  it "calculates the Mars mission example" do
+    mission = build_mission(mass: 14_606, path: [
+      ["launch", "Earth"], ["land", "Mars"], ["launch", "Mars"], ["land", "Earth"]
+    ])
+
+    expect(described_class.new(mission: mission).call).to eq(33_388)
+  end
+
+  it "calculates the passenger ship example" do
+    mission = build_mission(mass: 75_432, path: [
+      ["launch", "Earth"], ["land", "Moon"], ["launch", "Moon"],
+      ["land", "Mars"], ["launch", "Mars"], ["land", "Earth"]
+    ])
+
+    expect(described_class.new(mission: mission).call).to eq(212_161)
+  end
+
   it "returns zero for a mission with no steps" do
     mission = build_mission(mass: 28_801, path: [])
 

@@ -23,6 +23,8 @@ class FuelCalculator < BaseService
   attr_reader :mission
 
   def mission_steps
+    return mission.mission_steps.sort_by(&:position) if mission.new_record? || mission.mission_steps.loaded?
+
     mission.mission_steps.includes(:planet).order(:position)
   end
 
@@ -30,11 +32,11 @@ class FuelCalculator < BaseService
     coefficient, offset = FORMULAS.fetch(step.action)
     gravity = step.planet.gravity
     total = 0
-    fuel = (mass * gravity * coefficient - offset).floor
+    fuel = ((mass * gravity * coefficient) - offset).floor
 
     while fuel.positive?
       total += fuel
-      fuel = (fuel * gravity * coefficient - offset).floor
+      fuel = ((fuel * gravity * coefficient) - offset).floor
     end
 
     total

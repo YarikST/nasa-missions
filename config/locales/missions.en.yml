@@ -1,0 +1,8 @@
+en:
+  missions:
+    create:
+      created: "Mission created successfully."
+    update:
+      updated: "Mission updated successfully."
+    destroy:
+      deleted: "Mission deleted successfully."

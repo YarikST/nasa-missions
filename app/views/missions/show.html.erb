@@ -1,0 +1,54 @@
+<% content_for :title, "#{@mission.name} · NASA Missions" %>
+
+<div class="mb-4">
+  <%= link_to root_path, class: "link-secondary text-decoration-none small" do %>
+    <i class="bi bi-arrow-left" aria-hidden="true"></i> All missions
+  <% end %>
+  <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-3">
+    <h1 class="mb-0"><%= @mission.name %></h1>
+    <div class="d-flex flex-wrap gap-2">
+      <%= render Admin::ButtonComponent.new(path: edit_mission_path(@mission), variant: :outline_secondary, icon: "pencil") do %>
+        Edit
+      <% end %>
+      <%= render Admin::ButtonComponent.new(
+        path: mission_path(@mission),
+        method: :delete,
+        variant: :outline_danger,
+        icon: "trash",
+        confirm: "Delete #{@mission.name}? This cannot be undone."
+      ) do %>
+        Delete
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render Admin::FlashComponent.new(notice: notice) %>
+
+<div class="row g-4">
+  <div class="col-lg-8">
+    <%= render Admin::CardComponent.new(title: "Flight path") do %>
+      <% if @mission.mission_steps.any? %>
+        <ol class="list-group list-group-numbered list-group-flush">
+          <% @mission.mission_steps.each do |step| %>
+            <li class="list-group-item d-flex align-items-center gap-3 px-0">
+              <span class="fw-medium"><%= step.action.capitalize %></span>
+              <span class="text-body-secondary">—</span>
+              <span><%= step.planet.name %></span>
+            </li>
+          <% end %>
+        </ol>
+      <% else %>
+        <p class="text-body-secondary mb-0">No flight path steps yet.</p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-lg-4">
+    <%= render Admin::CardComponent.new(title: "Mission totals") do %>
+      <p class="text-body-secondary small mb-1">Equipment mass</p>
+      <p class="h5 mb-4"><%= number_with_delimiter(@mission.equipment_mass) %> kg</p>
+      <p class="text-body-secondary small mb-1">Total fuel required</p>
+      <p class="display-6 fw-semibold mb-0"><%= number_with_delimiter(@fuel) %> <span class="fs-5">kg</span></p>
+    <% end %>
+  </div>
+</div>

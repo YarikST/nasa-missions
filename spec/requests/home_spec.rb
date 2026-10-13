@@ -2,13 +2,13 @@
 
 require "rails_helper"
 
-RSpec.describe "Home" do
+RSpec.describe "Public pages" do
   describe "GET /" do
-    it "renders the public home page without signing in" do
+    it "renders the public mission list without signing in" do
       get root_path
 
       expect(response).to have_http_status(:ok)
-      expect(response.body).to include("NASA Missions", "Interplanetary fuel calculator")
+      expect(response.body).to include("NASA Missions", "No missions yet", "New mission")
       expect(response.body).not_to include("Log in", "Log out", "/admin/login")
     end
   end
