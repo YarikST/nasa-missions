@@ -123,7 +123,7 @@ GEM
     bcrypt_pbkdf (1.1.2)
     bigdecimal (4.1.2)
     bindex (0.8.1)
-    blueprinter (1.2.1)
+    blueprinter (1.3.0)
     bootsnap (1.24.6)
       msgpack (~> 1.2)
     bootstrap-email (1.8.1)
@@ -876,7 +876,7 @@ DEPENDENCIES
   ancestry (~> 5.1.0)
   audited (~> 5.8.0)
   aws-sdk-s3 (~> 1.226.0)
-  blueprinter (~> 1.2.1)
+  blueprinter (~> 1.3.0)
   bootsnap
   bootstrap-email
   bootstrap-icons (~> 1.0)
@@ -1017,7 +1017,7 @@ CHECKSUMS
   bcrypt_pbkdf (1.1.2) sha256=c2414c23ce66869b3eb9f643d6a3374d8322dfb5078125c82792304c10b94cf6
   bigdecimal (4.1.2) sha256=53d217666027eab4280346fba98e7d5b66baaae1b9c3c1c0ffe89d48188a3fbd
   bindex (0.8.1) sha256=7b1ecc9dc539ed8bccfc8cb4d2732046227b09d6f37582ff12e50a5047ceb17e
-  blueprinter (1.2.1) sha256=11b534060b0b548f7c7d2084f891742fe12760d8df77cb9a1cffe502a9ceca10
+  blueprinter (1.3.0) sha256=a89b68d97b8d7157e4657750c17aa1ab9f04af58a68b89257d127f973cf8720c
   bootsnap (1.24.6) sha256=c60bab88c70332290f0a2636a288f675299eb4f804a02a3c085b42eca9da164a
   bootstrap-email (1.8.1) sha256=1d249960177360149d26b25973cfce30d987ae50da2f1c3a50378635bb5807d9
   bootstrap-icons (1.0.15) sha256=4a19c2360f88263c1606235813b8575ff3d6c0773174ed4ceb368628e5541ae9

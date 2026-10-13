@@ -101,7 +101,7 @@ gem "sidekiq-unique-jobs", "~> 8.1.0"
 gem "sidekiq-throttled", "~> 2.1.0"
 
 # simple, fast, and declarative serialization library
-gem "blueprinter", "~> 1.2.1"
+gem "blueprinter", "~> 1.3.0"
 
 # rack middleware for handling Cross-Origin Resource Sharing (CORS), which makes cross-origin AJAX possible.
 gem "rack-cors", "3.0.0"
