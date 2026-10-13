@@ -46,7 +46,7 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 # active storage convenient validations
-gem "active_storage_validations", "~> 3.0.5"
+gem "active_storage_validations", "~> 4.1.1"
 
 # better console
 gem "pry-rails", "~> 0.3.11"
