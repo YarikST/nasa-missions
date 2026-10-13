@@ -51,7 +51,7 @@ group :development do
   gem "pry-rails", "~> 0.3.11"
   gem "pry-theme", "~> 1.3.1"
   gem "readline", "~> 0.0.4"
-  gem "amazing_print", "~> 2.0.0"
+  gem "amazing_print", "~> 3.0.0"
   gem "web-console"
   gem "letter_opener_web", "~> 3.0"
   gem "ruby-lsp-rails", "~> 0.4.8", require: false
