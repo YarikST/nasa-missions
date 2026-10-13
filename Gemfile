@@ -44,7 +44,7 @@ group :development, :test do
   gem "rubocop-rspec_rails", "~> 2.32.0", require: false
   gem "brakeman", "~> 8.0.5", require: false
   gem "parallel_tests", "~> 5.7.0"
-  gem "test-prof", "~> 1.6.1", require: false
+  gem "test-prof", "~> 1.6.4", require: false
 end
 
 group :development do

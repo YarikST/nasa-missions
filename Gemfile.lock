@@ -460,7 +460,8 @@ GEM
       railties (>= 6.0.0)
     strong_migrations (2.8.0)
       activerecord (>= 7.2)
-    test-prof (1.6.1)
+    test-prof (1.6.4)
+      logger
     thor (1.5.0)
     thruster (0.1.22)
     thruster (0.1.22-aarch64-linux)
@@ -548,7 +549,7 @@ DEPENDENCIES
   solid_cable
   stimulus-rails
   strong_migrations (~> 2.8.0)
-  test-prof (~> 1.6.1)
+  test-prof (~> 1.6.4)
   thruster
   turbo-rails
   tzinfo-data
@@ -731,7 +732,7 @@ CHECKSUMS
   ssrf_filter (1.5.0) sha256=e03dcdb9d1730d7f6710532a606b3543df2a448a0293ce04a2d995523c5a97f6
   stimulus-rails (1.3.4) sha256=765676ffa1f33af64ce026d26b48e8ffb2e0b94e0f50e9119e11d6107d67cb06
   strong_migrations (2.8.0) sha256=cb9c0f8160e60f3e9c0e76098d57a6f61825b9618e8eb41cebbd1c1079874439
-  test-prof (1.6.1) sha256=0332d9c39a7c118ed942b2db582f055d9f24964d150004ec6b964d2fa262499e
+  test-prof (1.6.4) sha256=95dd0cab62fde10ce61c41778b925a0def41bd6f58252fab2576b4cfcc25fb1d
   thor (1.5.0) sha256=e3a9e55fe857e44859ce104a84675ab6e8cd59c650a49106a05f55f136425e73
   thruster (0.1.22) sha256=f34fb82bd3e31570ae8f8b930e484f9e1db7b080cbc993d49090b161879c3e05
   thruster (0.1.22-aarch64-linux) sha256=6c306241e8ff8912fb26705a15cbb7b44a4dfcedd59fa890b2c72811f15cfa0e
