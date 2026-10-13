@@ -179,7 +179,7 @@ gem "dotenv-rails", "~> 3.2.0"
 gem "rotp", "~> 6.3"
 
 # use AWS S3 for ActiveStorage
-gem "aws-sdk-s3", "~> 1.226.0", require: false
+gem "aws-sdk-s3", "~> 1.233.2", require: false
 
 # UI components
 gem "view_component", "~> 4.12"
