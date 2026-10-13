@@ -161,7 +161,7 @@ gem "connection_pool", "~> 2.5.5"
 gem "counter_culture", "~> 3.12.2"
 
 # retriable is an simple DSL to retry failed code blocks with randomized exponential backoff.
-gem "retriable", "~> 4.2.0"
+gem "retriable", "~> 5.0.1"
 
 # Respond in user's preferred language
 gem "http_accept_language", "~> 2.1.1"

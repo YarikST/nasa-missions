@@ -618,7 +618,7 @@ GEM
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
-    retriable (4.2.0)
+    retriable (5.0.1)
     rexml (3.4.4)
     rolify (6.0.1)
     rotp (6.3.0)
@@ -941,7 +941,7 @@ DEPENDENCIES
   rails-i18n (~> 8.1.0)
   readline (~> 0.0.4)
   request_store (~> 1.7.0)
-  retriable (~> 4.2.0)
+  retriable (~> 5.0.1)
   rolify (~> 6.0.1)
   rotp (~> 6.3)
   rspec-rails (~> 8.0.4)
@@ -1225,7 +1225,7 @@ CHECKSUMS
   regexp_parser (2.12.0) sha256=35a916a1d63190ab5c9009457136ae5f3c0c7512d60291d0d1378ba18ce08ebb
   reline (0.6.3) sha256=1198b04973565b36ec0f11542ab3f5cfeeec34823f4e54cebde90968092b1835
   request_store (1.7.0) sha256=e1b75d5346a315f452242a68c937ef8e48b215b9453a77a6c0acdca2934c88cb
-  retriable (4.2.0) sha256=90c3b257472a1c02f2a3dfa64dd35a420f7a624cef1a5981e20fdac5730f8cdc
+  retriable (5.0.1) sha256=181cc7ae5fe9b289b6611f0223ee8c5cd361175238fd602a2cd48c8b81c30742
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
   rolify (6.0.1) sha256=fe45fbf70c4033ccada6f9ccc02b946eeaad044ea5d3e38546ae408d3adeb5b6
   rotp (6.3.0) sha256=75d40087e65ed0d8022c33055a6306c1c400d1c12261932533b5d6cbcd868854
