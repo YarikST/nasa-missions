@@ -1,0 +1,11 @@
+$nasa-missions-theme-colors: (
+        "accent": $nasa-missions-coral,
+        "brand-dark": $nasa-missions-navy,
+        "surface": $nasa-missions-white,
+        "muted": $nasa-missions-gray-600
+);
+
+$theme-colors: map-merge(
+        $theme-colors,
+        $nasa-missions-theme-colors
+);

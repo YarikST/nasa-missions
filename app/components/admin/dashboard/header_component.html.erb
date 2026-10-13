@@ -1,0 +1,19 @@
+<header class="bg-white border-bottom px-4 py-3">
+  <div class="d-flex align-items-center justify-content-between">
+    <h1 class="h4 mb-0"><%= title %></h1>
+
+    <div class="d-flex align-items-center gap-3">
+      <span class="fw-medium"><%= current_staff.name %></span>
+
+      <%= render Admin::ButtonComponent.new(
+        path: logout_path,
+        method: :delete,
+        variant: :outline_secondary,
+        size: :sm,
+        icon: "box-arrow-right"
+      ) do %>
+        Log out
+      <% end %>
+    </div>
+  </div>
+</header>

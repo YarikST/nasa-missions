@@ -1,0 +1,13 @@
+---
+:concurrency: 20
+tag: sidekiq
+:queues:
+  - critical
+  - long_running_critical
+  - cron_critical
+  - default
+  - long_running_default
+  - cron_default
+  - low_priority
+  - long_running_low_priority
+  - cron_low_priority

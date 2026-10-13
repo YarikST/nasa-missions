@@ -1,0 +1,308 @@
+# This is the configuration used to check the rubocop source code.
+
+inherit_gem:
+  test-prof: config/rubocop-rspec.yml
+
+require:
+  - ./lib/rubocop/cop/custom/nested_let_it_be_cop.rb
+  - ./lib/rubocop/cop/custom/let_it_be_override_cop.rb
+  - ./lib/rubocop/cop/custom/vcr_no_recording_cop.rb
+  - ./lib/rubocop/cop/custom/dangerous_rails_cache_methods_cop.rb
+  - ./lib/rubocop/cop/custom/duplicate_includes_association_cop.rb
+  - ./lib/rubocop/cop/custom/no_time_new_in_spec_cop.rb
+
+plugins:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-rspec_rails
+  - rubocop-factory_bot
+  - rubocop-slim
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - db/schema.rb
+    - db/queue_schema.rb
+    - db/cache_schema.rb
+    - db/cable_schema.rb
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'bin/*'
+    - '.dockerdev/**/*'
+  TargetRubyVersion: 4.0
+  SuggestExtensions: false
+  ActiveSupportExtensionsEnabled: true
+  DocumentationBaseURL: https://docs.rubocop.org/rubocop
+
+Rails:
+  DocumentationBaseURL: https://docs.rubocop.org/rubocop-rails
+
+# Metrics rules
+Metrics/ModuleLength:
+  CountAsOne: ['array', 'hash', 'heredoc', 'method_call']
+  Max: 200
+
+Metrics/ClassLength:
+  CountAsOne: ['array', 'hash', 'heredoc', 'method_call']
+  Max: 200
+
+Metrics/BlockLength:
+  Max: 50
+  AllowedMethods:
+    - included
+  Exclude:
+    - '**/*.gemspec'
+    - 'spec/**/*'
+    - 'db/migrate/**/*'
+    - 'db/seeds.rb'
+    - 'lib/tasks/**/*'
+    - 'config/routes.rb'
+    - 'config/environments/**/*'
+    - 'app/serializers/**/*'
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+Metrics/CollectionLiteralLength:
+  Max: 500
+
+Metrics/MethodLength:
+  CountAsOne: ['array', 'hash', 'heredoc', 'method_call']
+  Max: 50
+  Exclude:
+    - db/migrate/**/*
+    - db/seeds.rb
+
+
+# Bundle rules
+Bundler/OrderedGems:
+  Enabled: false
+
+
+# Style rules
+Style/WordArray:
+  MinSize: 5
+
+Style/SymbolArray:
+  MinSize: 5
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/GuardClause:
+  Enabled: false
+
+Style/Next:
+  Enabled: false
+
+Style/SoleNestedConditional:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/SafeNavigationChainLength:
+  Enabled: false
+
+Style/SymbolProc:
+  Exclude:
+    - 'app/serializers/**/*'
+
+Style/OptionalBooleanParameter:
+  Exclude:
+    - 'app/jobs/**/*'
+
+Style/ItBlockParameter:
+  EnforcedStyle: only_numbered_parameters
+
+Style/InverseMethods:
+  Enabled: false
+
+Style/MixinGrouping:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/HashAsLastArrayItem:
+  Enabled: true
+  EnforcedStyle: braces
+
+Style/RedundantStructKeywordInit:
+  Enabled: false
+
+Style/NegatedIf:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+# Layout rules
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - db/migrate/**/*
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/HashAlignment:
+  EnforcedLastArgumentHashStyle: ignore_implicit
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineAssignmentLayout:
+  EnforcedStyle: same_line
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+Layout/IndentationWidth:
+  EnforcedStyleAlignWith: relative_to_receiver
+
+Layout/FirstHashElementLineBreak:
+  Enabled: true
+
+Layout/FirstArrayElementLineBreak:
+  Enabled: true
+
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: true
+
+Naming/VariableNumber:
+  Enabled: false
+
+# Lint rules
+Lint/EmptyClass:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+# RSpec rules
+RSpec/HookArgument:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 6
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/StubbedMock:
+  Enabled: false
+
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/SpecFilePathFormat:
+  Enabled: false
+
+# Rails rules
+Rails/BulkChangeTable:
+  Enabled: false
+
+Rails/DefaultScope:
+  Enabled: true
+
+Rails/CreateTableWithTimestamps:
+  Enabled: false
+
+Rails/DeprecatedActiveModelErrorsMethods:
+  Enabled: false
+
+Rails/Delegate:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+# new cop introduced in rubocop update,need to disscuss with the team if we want it, disable for now
+Rails/StrongParametersExpect:
+  Enabled: false
+
+# unfortunately, this cop is buggy and have a lot of false positives
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+# Performance rules
+Performance/MethodObjectAsBlock:
+  Enabled: true
+
+Custom/RSpecLetItBeNestingCop:
+  Enabled: true
+  Include:
+    - 'spec/**/*'
+
+Custom/RSpecLetItBeOverrideCop:
+  Enabled: true
+  Include:
+    - 'spec/**/*'
+
+Custom/VcrNoRecordingCop:
+  Enabled: true
+  Include:
+    - 'spec/**/*'
+
+Custom/DangerousRailsCacheMethodsCop:
+  Enabled: true
+
+Custom/NoTimeNewInSpec:
+  Enabled: true
+  Include:
+    - "spec/**/*.rb"

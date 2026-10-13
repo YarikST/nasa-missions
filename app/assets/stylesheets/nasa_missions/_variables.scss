@@ -1,0 +1,95 @@
+// Brand palette
+$nasa-missions-purple: #6c5ce7;
+$nasa-missions-purple-dark: #5547d8;
+$nasa-missions-coral: #ff6b6b;
+$nasa-missions-navy: #24233a;
+
+$nasa-missions-green: #21b573;
+$nasa-missions-blue: #4d9de0;
+$nasa-missions-yellow: #f5b942;
+$nasa-missions-red: #e5484d;
+
+// Neutral palette
+$nasa-missions-white: #ffffff;
+$nasa-missions-gray-50: #f8f8fc;
+$nasa-missions-gray-100: #f1f1f7;
+$nasa-missions-gray-200: #e5e5ef;
+$nasa-missions-gray-300: #d2d2df;
+$nasa-missions-gray-500: #89899a;
+$nasa-missions-gray-600: #747487;
+$nasa-missions-gray-800: #30303b;
+$nasa-missions-gray-900: #20202a;
+
+// Bootstrap semantic colors
+$primary: $nasa-missions-purple;
+$secondary: $nasa-missions-navy;
+$success: $nasa-missions-green;
+$info: $nasa-missions-blue;
+$warning: $nasa-missions-yellow;
+$danger: $nasa-missions-red;
+$light: $nasa-missions-gray-50;
+$dark: $nasa-missions-gray-900;
+
+// Body
+$body-bg: $nasa-missions-gray-50;
+$body-color: $nasa-missions-gray-900;
+
+// Links
+$link-color: $primary;
+$link-hover-color: shade-color($primary, 15%);
+$link-decoration: none;
+$link-hover-decoration: none;
+
+// Borders
+$border-color: $nasa-missions-gray-200;
+$border-radius: 0.75rem;
+$border-radius-sm: 0.5rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.25rem;
+$border-radius-xxl: 1.5rem;
+
+// Typography
+$font-family-sans-serif:
+        Inter,
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        sans-serif;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$headings-font-weight: $font-weight-semibold;
+$headings-color: $nasa-missions-gray-900;
+
+// Cards
+$card-bg: $nasa-missions-white;
+$card-border-color: $nasa-missions-gray-200;
+$card-border-radius: $border-radius-lg;
+$card-cap-bg: transparent;
+$card-box-shadow: 0 0.25rem 1.25rem rgba($nasa-missions-gray-900, 0.06);
+
+// Buttons
+$btn-font-weight: $font-weight-semibold;
+$btn-border-radius: 0.65rem;
+$btn-border-radius-sm: 0.5rem;
+$btn-border-radius-lg: 0.8rem;
+$btn-padding-y: 0.625rem;
+$btn-padding-x: 1rem;
+
+// Forms
+$input-bg: $nasa-missions-white;
+$input-color: $nasa-missions-gray-900;
+$input-border-color: $nasa-missions-gray-300;
+$input-border-radius: 0.65rem;
+$input-focus-border-color: tint-color($primary, 25%);
+$input-focus-box-shadow: 0 0 0 0.25rem rgba($primary, 0.15);
+$input-placeholder-color: $nasa-missions-gray-500;
+
+// Navbar
+$navbar-padding-y: 0.875rem;
+$navbar-light-color: $nasa-missions-gray-600;
+$navbar-light-hover-color: $primary;
+$navbar-light-active-color: $primary;

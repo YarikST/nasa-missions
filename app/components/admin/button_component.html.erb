@@ -1,0 +1,39 @@
+<% if disabled_link? %>
+  <%= tag.span(
+        button_content,
+        class: button_classes,
+        **disabled_link_html_attributes
+      ) %>
+<% elsif link? %>
+  <%= link_to(
+        path,
+        class: button_classes,
+        data: link_data,
+        **element_html_attributes
+      ) do %>
+    <%= button_content %>
+  <% end %>
+<% elsif request_button? %>
+  <%= button_to(
+        path,
+        method: method,
+        class: button_classes,
+        disabled: disabled?,
+        data: data,
+        params: params,
+        form: request_form_attributes,
+        **element_html_attributes
+      ) do %>
+    <%= button_content %>
+  <% end %>
+<% else %>
+  <%= tag.button(
+    type: type,
+    class: button_classes,
+    disabled: disabled?,
+    data: data,
+    **element_html_attributes
+  ) do %>
+    <%= button_content %>
+  <% end %>
+<% end %>

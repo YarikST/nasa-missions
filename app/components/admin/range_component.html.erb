@@ -1,0 +1,40 @@
+<div class="mb-3" data-controller="range">
+  <% if title.present? %>
+    <label for="<%= input_id %>" class="form-label">
+      <%= title %>
+
+      <% if optional? %>
+        <span class="text-body-secondary fw-normal">
+          Optional
+        </span>
+      <% end %>
+    </label>
+  <% end %>
+
+  <input
+    id="<%= input_id %>"
+    name="<%= name %>"
+    type="range"
+    value="<%= value %>"
+    min="<%= min %>"
+    max="<%= max %>"
+    step="<%= step %>"
+    class="<%= input_classes %>"
+    data-action="input->range#count"
+    <%= tag.attributes(data: data) %>
+    <%= tag.attributes(html_attributes) %>
+    <%= "disabled" if disabled? %>
+    <%= "required" unless optional? %>
+  >
+
+  <div class="form-text">
+    Current:
+    <span data-range-target="counter"><%= value %></span>
+  </div>
+
+  <% errors.each do |error| %>
+    <div class="invalid-feedback d-block">
+      <%= error %>
+    </div>
+  <% end %>
+</div>

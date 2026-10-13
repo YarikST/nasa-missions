@@ -1,0 +1,105 @@
+x-app: &app
+  build:
+    context: .
+    args:
+      RUBY_VERSION: '4.0.4'
+      PG_MAJOR: '18'
+      NODE_MAJOR: '24'
+  image: nasa-missions:0.0.1
+  environment: &env
+    RAILS_ENV: ${RAILS_ENV:-development}
+  tmpfs:
+    - /tmp
+    - /nasa-missions/tmp/pids
+
+x-backend: &backend
+  <<: *app
+  stdin_open: true
+  tty: true
+  volumes:
+    - ..:/nasa-missions:cached
+    - bundle:/usr/local/bundle
+    - rails_cache:/nasa-missions/tmp/cache
+    - history:/usr/local/hist
+    - ./.psqlrc:/root/.psqlrc:ro
+    - ./.bashrc:/root/.bashrc:ro
+    - ./.pryrc:/root/.pryrc:ro
+    - node_modules:/root/.npm
+    - storage:/nasa-missions/storage
+  environment: &backend_environment
+    <<: *env
+    CACHE_REDIS_URL: redis://redis:6379/
+    SIDEKIQ_REDIS_URL: redis://redis:6379/
+    RUNNING_IN_LOCAL_DOCKER: 'true'
+    # Remap local server from localhost to postgres in a container
+    PG_HOST: postgres
+    DB_ENV: ${DB_ENV:-}
+    MALLOC_ARENA_MAX: 2
+    WEB_CONCURRENCY: ${WEB_CONCURRENCY:-1}
+    BOOTSNAP_CACHE_DIR: /usr/local/bundle/_bootsnap
+    XDG_DATA_HOME: /nasa-missions/tmp/cache
+    HISTFILE: /usr/local/hist/.bash_history
+    PSQL_HISTFILE: /usr/local/hist/.psql_history
+    IRB_HISTFILE: /usr/local/hist/.irb_history
+    EDITOR: vim
+  depends_on: &backend_depends_on
+    postgres:
+      condition: service_healthy
+
+services:
+  rails:
+    <<: *backend
+    command: bundle exec rails
+
+  web:
+    <<: *backend
+    command: bundle exec rails server -b 0.0.0.0
+    ports:
+      - '${APP_PORT:-3000}:3000'
+
+  sidekiq:
+    <<: *backend
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:18.1
+    shm_size: 1g
+    volumes:
+      - .psqlrc:/root/.psqlrc:ro
+      - postgres:/var/lib/postgresql
+      - history:/usr/local/hist
+    environment:
+      PSQL_HISTFILE: /usr/local/hist/.psql_history
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: pg_isready -U postgres -h 127.0.0.1
+      interval: 5s
+
+  redis:
+    image: redis:7.2-alpine
+    volumes:
+      - redis:/data
+    healthcheck:
+      test: redis-cli ping
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+  css:
+    <<: *backend
+    command: yarn watch:css
+    depends_on: [ ]
+
+volumes:
+  bundle:
+  history:
+  rails_cache:
+  postgres:
+  redis:
+  node_modules:
+  storage:
+  esdata:
+    driver: local

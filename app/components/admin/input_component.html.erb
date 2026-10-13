@@ -1,0 +1,40 @@
+<div class="mb-3">
+  <% if title.present? %>
+    <label for="<%= input_id %>" class="form-label">
+      <%= title %>
+
+      <% if optional? %>
+        <span class="text-body-secondary fw-normal">
+          Optional
+        </span>
+      <% end %>
+    </label>
+  <% end %>
+
+  <input
+    id="<%= input_id %>"
+    name="<%= name %>"
+    type="<%= type %>"
+    value="<%= value %>"
+    placeholder="<%= placeholder %>"
+    class="<%= input_classes %>"
+    autocomplete="<%= autocomplete %>"
+    maxlength="<%= maxlength %>"
+    <%= tag.attributes(data: data) %>
+    <%= tag.attributes(html_attributes) %>
+    <%= "disabled" if disabled? %>
+    <%= "required" unless optional? %>
+  >
+
+  <% if hint.present? && !invalid? %>
+    <div class="form-text">
+      <%= hint %>
+    </div>
+  <% end %>
+
+  <% errors.each do |error| %>
+    <div class="invalid-feedback d-block">
+      <%= error %>
+    </div>
+  <% end %>
+</div>

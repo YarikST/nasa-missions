@@ -1,0 +1,44 @@
+<%= render Admin::CardComponent.new(
+  html_attributes: { class: "border-0 shadow-sm" },
+  body_html_attributes: { class: "p-4 p-md-5" },
+  footer_html_attributes: {
+    class: "bg-transparent text-center text-body-secondary small py-3"
+  }
+) do |card| %>
+  <div class="d-flex align-items-center gap-3 mb-4">
+    <div
+      class="bg-dark text-white rounded-3 d-flex align-items-center justify-content-center fw-bold"
+      style="width: 42px; height: 42px;"
+    >
+      NM
+    </div>
+
+    <div>
+      <div class="fw-bold small">
+        NASA Missions
+      </div>
+
+      <div class="text-body-secondary small">
+        Admin workspace
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <h1 class="h3 mb-2"><%= title %></h1>
+
+    <% if description.present? %>
+      <p class="text-body-secondary mb-0">
+        <%= description %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= content %>
+
+  <% if footer? %>
+    <% card.with_footer do %>
+      <%= footer %>
+    <% end %>
+  <% end %>
+<% end %>

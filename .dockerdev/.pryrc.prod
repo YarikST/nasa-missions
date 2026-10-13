@@ -1,0 +1,61 @@
+# frozen_string_literal: true
+
+require "rubygems"
+require "readline"
+
+Pry.config.editor = "vim"
+Pry.config.color = true
+Pry.pager = false
+
+if ENV["PROJECT_ENV"] == "production"
+  _project_env = Pry::Helpers::Text.bold(ENV["PROJECT_ENV"])
+  _project_env = Pry::Helpers::Text.red(_project_env)
+elsif ENV["PROJECT_ENV"]&.in?(["stage", "staging"])
+  _project_env = Pry::Helpers::Text.bold("staging")
+  _project_env = Pry::Helpers::Text.yellow(_project_env)
+elsif ENV["PROJECT_ENV"]&.starts_with?("dev")
+  _project_env = Pry::Helpers::Text.bold(ENV["PROJECT_ENV"])
+  _project_env = Pry::Helpers::Text.green(_project_env)
+else
+  _project_env = Pry::Helpers::Text.bold("__unknown_env__")
+end
+
+Pry.config.prompt = (Pry::Prompt.new(
+  "pry prompt with env",
+  "custom prompt displaying rails env",
+  [
+    proc { |obj, nest_level, pry|
+      "[#{pry.input_ring.size}][#{_project_env}](#{obj}):#{nest_level} > "
+    },
+    proc { |obj, nest_level, pry|
+      "[#{pry.input_ring.size}][#{_project_env}](#{obj}):#{nest_level} * "
+    }
+  ]
+))
+
+Pry.config.print = proc do |output, value|
+  Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output)
+rescue StandardError
+  output.puts "=> #{value}"
+end
+
+Pry.config.ls.separator = "\n" # new lines between methods
+Pry.config.ls.heading_color = :magenta
+Pry.config.ls.public_method_color = :green
+Pry.config.ls.protected_method_color = :yellow
+Pry.config.ls.private_method_color = :bright_black
+
+begin
+  require "amazing_print"
+  # The following line enables awesome_print for all pry output,
+  # and it also enables paging
+  Pry.config.print = proc { |output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output) }
+
+  AmazingPrint.defaults = {
+    string_limit: 120,
+    indent: 2,
+  }
+  AmazingPrint.pry!
+rescue LoadError => _e
+  puts "gem install amazing_print  # <-- highly recommended"
+end
