@@ -158,7 +158,7 @@ gem "pg_query", "~> 6.2.2"
 gem "connection_pool", "~> 2.5.5"
 
 # Counter caches for Rails
-gem "counter_culture", "~> 3.12.2"
+gem "counter_culture", "~> 3.14.0"
 
 # retriable is an simple DSL to retry failed code blocks with randomized exponential backoff.
 gem "retriable", "~> 4.2.0"
