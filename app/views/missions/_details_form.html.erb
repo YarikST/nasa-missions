@@ -6,7 +6,6 @@
         name: form.field_name(:name),
         title: "Mission name",
         value: mission.name,
-        mandatory: true,
         placeholder: "e.g. Apollo 11",
         errors: mission.errors[:name]
       ) %>
@@ -16,7 +15,6 @@
         title: "Equipment mass (kg)",
         type: :number,
         value: mission.equipment_mass,
-        mandatory: true,
         placeholder: "28801",
         hint: "Enter a positive mass in kilograms.",
         errors: mission.errors[:equipment_mass],

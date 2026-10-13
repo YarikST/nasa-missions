@@ -20,8 +20,7 @@
           title: "Action",
           options: MissionStep::ACTIONS.map { |action| [action.capitalize, action] },
           value: step.action,
-          mandatory: true,
-          html_attributes: { id: "step_#{step.id}_action" }
+          id: "step_#{step.id}_action"
         ) %>
       </div>
       <div class="col-sm-6">
@@ -30,8 +29,7 @@
           title: "Planet",
           options: planets.map { |planet| [planet.name, planet.id] },
           value: step.planet_id,
-          mandatory: true,
-          html_attributes: { id: "step_#{step.id}_planet" }
+          id: "step_#{step.id}_planet"
         ) %>
       </div>
     </div>

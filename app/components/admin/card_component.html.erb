@@ -1,31 +1,9 @@
-<%= tag.div(class: card_classes, **card_html_attributes) do %>
-  <% if header? || default_header? %>
-    <%= tag.div(class: header_classes, **header_attributes) do %>
-      <% if header? %>
-        <%= header %>
-      <% else %>
-        <% if title.present? %>
-          <h2 class="h5 mb-0">
-            <%= title %>
-          </h2>
-        <% end %>
-
-        <% if description.present? %>
-          <p class="text-body-secondary small mb-0 mt-1">
-            <%= description %>
-          </p>
-        <% end %>
-      <% end %>
+<div class="card">
+  <div class="card-header">
+    <h2 class="h5 mb-0"><%= title %></h2>
+    <% if description.present? %>
+      <p class="text-body-secondary small mb-0 mt-1"><%= description %></p>
     <% end %>
-  <% end %>
-
-  <%= tag.div(class: body_classes, **body_attributes) do %>
-    <%= content %>
-  <% end %>
-
-  <% if footer? %>
-    <%= tag.div(class: footer_classes, **footer_attributes) do %>
-      <%= footer %>
-    <% end %>
-  <% end %>
-<% end %>
+  </div>
+  <div class="card-body"><%= content %></div>
+</div>

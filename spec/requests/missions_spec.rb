@@ -70,6 +70,8 @@ RSpec.describe "Missions" do
 
       add_step_form = response.parsed_body.at_css("form[action='#{mission_mission_steps_path(mission)}']")
       expect(add_step_form["method"]).to eq("post")
+      expect(add_step_form.at_css("select#new_step_action[required] option[value='launch']")).to be_present
+      expect(add_step_form.at_css("select#new_step_planet[required] option[value='#{earth.id}']")).to be_present
       expect(add_step_form.at_css("button[type='submit']").text).to include("Add step")
     end
   end
@@ -171,6 +173,9 @@ RSpec.describe "Missions" do
 
       expect(response).to have_http_status(:ok)
       expect(response.body).to include(mission.name, "28,801", "51,898", "View", "Edit", "Delete")
+      delete_form = response.parsed_body.at_css("form[action='#{mission_path(mission)}']")
+      expect(delete_form.at_css("input[name='_method'][value='delete']")).to be_present
+      expect(delete_form["data-turbo-confirm"]).to include("Delete #{mission.name}?")
     end
   end
 

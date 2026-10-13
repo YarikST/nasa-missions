@@ -1,96 +1,11 @@
-<div class="mb-3" data-controller="select-menu">
-  <% if title.present? %>
-    <label for="<%= trigger_id %>" class="form-label">
-      <%= title %>
-
-      <% if optional? %>
-        <span class="text-body-secondary fw-normal">
-          Optional
-        </span>
-      <% end %>
-    </label>
-  <% end %>
-
-  <input
-    id="<%= input_id %>"
-    name="<%= name %>"
-    type="hidden"
-    value="<%= value %>"
-    <%= tag.attributes(data: input_data) %>
-    <%= "disabled" if disabled? %>
-  >
-
-  <div class="dropdown">
-    <button
-      id="<%= trigger_id %>"
-      type="button"
-      class="<%= trigger_classes %>"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-      aria-haspopup="listbox"
-      aria-controls="<%= menu_id %>"
-      <%= tag.attributes(trigger_html_attributes) %>
-      <%= "disabled" if disabled? %>
-    >
-      <span data-select-menu-target="label">
-        <%= selected_label %>
-      </span>
-    </button>
-
-    <div
-      id="<%= menu_id %>"
-      class="dropdown-menu select-menu-dropdown w-100 p-2 shadow-sm"
-      role="listbox"
-      aria-labelledby="<%= trigger_id %>"
-    >
-      <% options.each do |option| %>
-        <button
-          type="button"
-          role="option"
-          class="<%= option_classes(option) %>"
-          aria-selected="<%= selected?(option) %>"
-          data-select-menu-target="option"
-          data-action="click->select-menu#select"
-          data-value="<%= option_value(option) %>"
-          data-label="<%= option_label(option) %>"
-        >
-          <span class="flex-grow-1 overflow-hidden">
-            <span class="d-block fw-medium text-truncate">
-              <%= option_label(option) %>
-            </span>
-
-            <% if option_description(option).present? %>
-              <span class="d-block small text-wrap opacity-75">
-                <%= option_description(option) %>
-              </span>
-            <% end %>
-          </span>
-
-          <span
-            class="<%= class_names(
-                         "ms-auto",
-                         "fw-semibold",
-                         "invisible": !selected?(option)
-                       ) %>"
-            data-select-menu-check
-            aria-hidden="true"
-          >
-            ✓
-          </span>
-        </button>
-      <% end %>
-    </div>
-  </div>
-
-  <% if hint.present? && !invalid? %>
-    <div class="form-text">
-      <%= hint %>
-    </div>
-  <% end %>
-
+<div class="mb-3">
+  <label for="<%= id %>" class="form-label"><%= title %></label>
+  <%= select_tag name, options_for_select(options, value),
+    include_blank: "Select an option",
+    id: id,
+    class: class_names("form-select", "is-invalid": errors.any?),
+    required: true %>
   <% errors.each do |error| %>
-    <div class="invalid-feedback d-block">
-      <%= error %>
-    </div>
+    <div class="invalid-feedback d-block"><%= error %></div>
   <% end %>
 </div>

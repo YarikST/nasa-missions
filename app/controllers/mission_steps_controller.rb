@@ -7,13 +7,10 @@ class MissionStepsController < ApplicationController
   before_action :set_step, only: %i[update destroy]
 
   def create
-    @mission.with_lock do
-      position = (@mission.mission_steps.maximum(:position) || -1) + 1
-      @step = @mission.mission_steps.build(step_params.merge(position: position))
-      @saved = @step.save
-    end
+    position = (@mission.mission_steps.maximum(:position) || -1) + 1
+    @step = @mission.mission_steps.build(step_params.merge(position: position))
 
-    if @saved
+    if @step.save
       respond_to do |format|
         format.turbo_stream { render_mission_plan(mission: @mission) }
         format.html { redirect_to edit_mission_path(@mission) }
