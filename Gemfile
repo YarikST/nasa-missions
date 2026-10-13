@@ -79,7 +79,7 @@ gem "marcel", "~> 1.0"
 gem "mime-types", "~> 3.6"
 
 # generate sitemap for search services
-gem "sitemap_generator", "~> 7.0.1"
+gem "sitemap_generator", "~> 7.1.1"
 
 # memoize methods
 gem "memo_wise", "~> 1.13.0"
