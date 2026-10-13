@@ -3,8 +3,8 @@
 require "rails_helper"
 require "rake"
 
-RSpec.describe "missions:seed_examples" do
-  it "creates the supported planets and missions without duplicating them when rerun" do
+RSpec.describe Rake::Task do
+  it "runs missions:seed_examples without duplicating planets or missions" do
     Rails.application.load_tasks
     task = Rake::Task["missions:seed_examples"]
 

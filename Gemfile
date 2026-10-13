@@ -107,7 +107,7 @@ gem "blueprinter", "~> 1.2.1"
 gem "rack-cors", "3.0.0"
 
 # i18n support for rails
-gem "rails-i18n",  "~> 8.1.0"
+gem "rails-i18n", "~> 8.1.0"
 
 # OAuth 2.0 library for authorization
 gem "oauth2", "2.0.24"
