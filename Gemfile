@@ -13,7 +13,7 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "bootsnap", require: false
 
 gem "solid_cable"
-gem "sidekiq", "8.0.10"
+gem "sidekiq", "8.1.7"
 gem "strong_migrations", "~> 2.8.0"
 gem "dotenv-rails", "~> 3.2.0"
 
