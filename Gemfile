@@ -17,7 +17,7 @@ gem "sidekiq", "8.0.10"
 gem "strong_migrations", "~> 2.8.0"
 gem "dotenv-rails", "~> 3.2.0"
 
-gem "view_component", "~> 4.12"
+gem "view_component", "~> 4.15"
 gem "bootstrap-icons", "~> 1.0"
 gem "cssbundling-rails"
 
