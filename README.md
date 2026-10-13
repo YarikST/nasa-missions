@@ -23,25 +23,21 @@ Docker containers, volumes, and databases use separate `nasa-missions` names.
 Run `dip rails db:seed` on an existing database to add the Earth, Moon, and Mars
 options used by the mission planner.
 
+To add the example Apollo 11, Mars, and Passenger Ship missions, run:
+
+```sh
+dip rails missions:seed_examples
+```
+
+The task also creates the required planets and can be run again without
+duplicating the example missions.
+
 Useful commands:
 
 ```sh
 dip compose up -d web css
 dip compose down
 dip rails console
-dip rspec spec/requests/home_spec.rb spec/routing/public_routes_spec.rb spec/components/admin
-dip rubocop app/controllers/home_controller.rb config/routes.rb spec/requests/home_spec.rb spec/routing/public_routes_spec.rb
+dip rspec
+dip rubocop
 ```
-
-## Scope of the imported code
-
-- The home page is public; there are no login, account, or admin routes.
-- The starter application's workflows, reviews, submissions, staff records, and
-  their seed data were removed from the imported application.
-- Files in `app/components`, their styles, and Stimulus controllers retain their
-  existing interfaces and behavior. Component examples use sample data where they
-  previously depended on staff records.
-- General supporting libraries and development tooling are retained from the
-  starter application.
-- Git history, local credentials, uploaded files, installed dependencies, and
-  generated assets were not imported.
