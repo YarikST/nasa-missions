@@ -278,7 +278,7 @@ group :test do
   gem "test-prof", "~> 1.6.1"
 
   # library for stubbing and setting expectations on HTTP requests in Ruby.
-  gem "webmock", "~> 3.26.2"
+  gem "webmock", "~> 3.27.0"
 
   # record your test suite's HTTP interactions and replay them
   gem "vcr", "~> 6.4.0"
