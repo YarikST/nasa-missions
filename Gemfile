@@ -206,7 +206,7 @@ group :production do
   gem "dogstatsd-ruby", "~> 5.7"
 
   # lograge for JSON logging
-  gem "lograge", "~> 0.14.0"
+  gem "lograge", "~> 0.15.1"
   gem "lograge-sql", "~> 2.6.1"
 end
 
