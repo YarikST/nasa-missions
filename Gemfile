@@ -223,7 +223,7 @@ group :development, :test do
   # check code style
   gem "rubocop", "~> 1.88.1", require: false
   gem "rubocop-performance", "~> 1.26.1", require: false
-  gem "rubocop-rails", "~> 2.35.4", require: false
+  gem "rubocop-rails", "~> 2.36.0", require: false
   gem "rubocop-rspec", "~> 3.10.2", require: false
   gem "rubocop-rspec_rails", "~> 2.32.0", require: false
   gem "rubocop-factory_bot", "~> 2.28.0", require: false
