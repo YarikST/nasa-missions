@@ -726,7 +726,7 @@ GEM
       sidekiq (>= 5.0)
     shoulda-matchers (8.0.1)
       activesupport (>= 7.2)
-    shrine (3.7.1)
+    shrine (3.10.1)
       content_disposition (~> 1.0)
       down (~> 5.1)
     sidekiq (8.0.10)
@@ -959,7 +959,7 @@ DEPENDENCIES
   sentry-ruby (~> 6.6.2)
   sentry-sidekiq (~> 6.6.2)
   shoulda-matchers (~> 8.0.1)
-  shrine (~> 3.7.1)
+  shrine (~> 3.10.1)
   sidekiq (= 8.0.10)
   sidekiq-cron (~> 2.4.0)
   sidekiq-throttled (~> 2.1.0)
@@ -1263,7 +1263,7 @@ CHECKSUMS
   sentry-ruby (6.6.2) sha256=a64aaf757d10058598fe5871de925b2a5a3d78273feb9bca23fff843accc6cd6
   sentry-sidekiq (6.6.2) sha256=0552a74e8e3af7261efb23eebe9e5afb8fe186ec66245e1caaf1c6ff71ad1fa2
   shoulda-matchers (8.0.1) sha256=5dbb46e5765b9da225111b085e0819e8c8a121ff94bba430a153eb1ea2c60288
-  shrine (3.7.1) sha256=963d44c0e7cab2abb71c5dd514ba5c62ab039c2a0ccdccebe0fbcd376274d747
+  shrine (3.10.1) sha256=c9a08d60495e955d9e5d3ceec5d3d9cd18fb3b8b3a14544ab473490b5dc7874a
   sidekiq (8.0.10) sha256=37ccd8da8d46f6779b8655cb30c1bfcb0decd57e890ff56d8b8252a5d9a84cd6
   sidekiq-cron (2.4.0) sha256=25595c5aee0c16d13a89466e5108af047fa4cfbf388199b39e1a600ca39472d4
   sidekiq-throttled (2.1.0) sha256=430d4684b781b37f7f22b9b4a26dadf438b725718ecb821ae8bb8ea66f78fc4c

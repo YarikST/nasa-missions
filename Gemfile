@@ -69,7 +69,7 @@ gem "faraday-http-cache", "~> 2.7.0"
 gem "faraday-typhoeus", "~> 2.0.0"
 
 # Image Uploaders
-gem "shrine", "~> 3.7.1"
+gem "shrine", "~> 3.10.1"
 
 # FTP client
 gem "net-ftp", "~> 0.3.9"
