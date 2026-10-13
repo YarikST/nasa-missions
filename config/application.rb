@@ -30,13 +30,12 @@ module NasaMissions
     # Use sidekiq for ActiveJob
     config.active_job.queue_adapter = :sidekiq
     config.active_storage.queues.purge = :low_priority
+    config.active_storage.variant_processor = :disabled
 
     config.generators do |g|
       g.test_framework :rspec, fixture: false, model_specs: false
-      g.fixture_replacement :factory_bot, dir: "spec/factories"
       g.helper false
       g.assets false
-      g.jbuilder false
       g.orm :active_record
     end
 

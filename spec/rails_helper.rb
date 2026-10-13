@@ -14,7 +14,6 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "rspec/rails"
 require "capybara/rspec"
 require "view_component/test_helpers"
-require "test_prof/recipes/rspec/let_it_be"
 require_relative "request_helper"
 
 Rails.root.glob("spec/support/**/*.rb").each { |file| require file }
@@ -27,16 +26,8 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
-  config.include FactoryBot::Syntax::Methods
   config.include ActiveSupport::Testing::TimeHelpers
   config.include RequestHelper, type: :request
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
-
-  Shoulda::Matchers.configure do |matchers|
-    matchers.integrate do |with|
-      with.test_framework :rspec
-      with.library :rails
-    end
-  end
 end

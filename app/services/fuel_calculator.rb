@@ -2,7 +2,7 @@
 
 require "bigdecimal"
 
-class FuelCalculator < BaseService
+class FuelCalculator
   FORMULAS = {
     "launch" => [BigDecimal("0.042"), 33],
     "land" => [BigDecimal("0.033"), 42]
